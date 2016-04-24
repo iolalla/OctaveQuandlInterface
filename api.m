@@ -1,19 +1,11 @@
 function output = api(path, varargin)
   % Parse input.
   p = inputParser;
-  try # For Octave versions pre 4.0.0
-    p = p.addRequired('path');
-    p = p.addOptional('params',struct());
-    p = p.addOptional('version','v1');
-    p = p.addOptional('https','GET');
-    p = p.parse(path,varargin{:});
-  catch 
     p.addRequired('path');
     p.addOptional('params',struct());
     p.addOptional('version','v1');
     p.addOptional('https','GET');
     p.parse(path,varargin{:});
-  end_try_catch
   path = p.Results.path;
   version = p.Results.version;
   http = p.Results.https;

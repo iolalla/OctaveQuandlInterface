@@ -25,17 +25,6 @@ function [output headers] = getQuandl(code,authcode,varargin)
     pkg load general;
     % Parse input.
     p = inputParser();
-    try # For Octave versions pre 4.0.0
-        p = p.addRequired('code');
-        p = p.addRequired('authcode');
-        p = p.addRequired('type');
-        p = p.addOptional('start_date',[]);
-        p = p.addOptional('end_date',[]);
-        p = p.addOptional('transformation',[]);
-        p = p.addOptional('collapse',[]);
-        p = p.addOptional('rows',[]);
-        p = p.parse(code,authcode,varargin{:});
-    catch
         p.addRequired('code');
         p.addRequired('authcode');
         p.addRequired('type');
@@ -45,7 +34,6 @@ function [output headers] = getQuandl(code,authcode,varargin)
         p.addOptional('collapse',[]);
         p.addOptional('rows',[]);
         p.parse(code,authcode,varargin{:});
-    end_try_catch     
     start_date = p.Results.start_date;
     end_date = p.Results.end_date;
     transformation = p.Results.transformation;
